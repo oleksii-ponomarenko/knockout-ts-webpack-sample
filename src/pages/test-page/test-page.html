@@ -1,0 +1,24 @@
+<layout>
+	<form class="form-inline">
+		<h1>Edit test</h1>
+		<h2 class="clearfix">
+			Title: 
+			<input class="form-control jira-textbox" data-bind="value: test().name"></input>
+
+			<div class="pull-right">
+				<a class="btn btn-success" data-bind="visible: test().isChanged, click: saveTest">Save</a>
+				<a class="btn btn-default" data-bind="click: addQuestion">Add question</a>
+			</div>
+		</h1>
+
+		<div class="well" data-bind="visible: !test().questions().length">
+			<h2>No questions.</h2>
+			<p>You can add it by clicking on <b>Add question</b> button in top-right corner.
+		</div>
+		<ul class="unstyled-list" data-bind="foreach: { data: test().questions, as: 'question' }">
+			<li>
+				<editable-question params="question: question"></editable-question>
+			</li>
+		</ul>
+	</form>
+</layout>

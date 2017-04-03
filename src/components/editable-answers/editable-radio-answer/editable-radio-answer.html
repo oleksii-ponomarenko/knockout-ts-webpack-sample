@@ -1,0 +1,13 @@
+<div class="panel panel-default">
+	<div class="panel-body">
+		<label data-bind="attr: { for: 'answer-'+answer.id }">
+			Enter answer text: 
+		</label>
+		<input required data-bind="value: answer.text, attr: { id: 'answer-'+answer.id }" class="form-control"/>
+		<label>
+			Is correct: 
+			<input type="radio" data-bind="value: answer.id, name: 'question-'+questionId, checked: chosenRadioAnswerId" />
+		</label>
+		<a type="button" class="close" title="Remove answer" data-dismiss="alert" data-bind="click: remove">&times;</a>
+	</div>
+</div>

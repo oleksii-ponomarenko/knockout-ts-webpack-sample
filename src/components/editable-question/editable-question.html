@@ -1,0 +1,39 @@
+<div class="well">
+	<div class="h4">
+		<input placeholder="Question text" class="form-control jira-textbox" data-bind="value: question.text" />
+	</div>
+
+	<div data-bind="if: question.questionType() === 1 && question.answers().length > 0">
+		<!-- Simple answer -->
+		<editable-simple-answer params="answer: question.answers()[0]"></editable-simple-answer>
+	</div>
+
+	<div data-bind="if: question.questionType() === 2">
+		<!-- Radio answer -->
+		<ul class="unstyled-list" data-bind="foreach: { data: question.answers, as: 'answer'}">
+			<li>
+				<editable-radio-answer params="answer: answer, questionId: question.id, chosenRadioAnswerId: $parent.chosenRadioAnswerId, removeAnswer: function(a) {$parent.removeAnswer(a)}"></editable-radio-answer>
+			</li>
+		</ul>
+	</div>
+
+	<div data-bind="if: question.questionType() === 3">
+		<!-- Checkbox answer -->
+		<ul class="unstyled-list" data-bind="foreach: { data: question.answers, as: 'answer'}">
+			<li>
+				<editable-checkbox-answer params="answer: answer, questionId: question.id, removeAnswer: function(a) {$parent.removeAnswer(a)}"></editable-checkbox-answer>
+			</li>
+		</ul>
+	</div>
+
+	<div class="clearfix">
+		<div class="pull-left">
+			<button class="btn btn-success" data-bind="click: addAnswer, visible: question.questionType() !== 1 || question.answers().length === 0">Add answer</button>
+		</div>
+
+		<div class="pull-right">
+			<label>Choose question type: </label>
+			<select class="form-control" data-bind="value: question.questionType, optionsText: getQuestionTypeName, options: questionTypes"></select>
+		</div>
+	</div>
+</div>

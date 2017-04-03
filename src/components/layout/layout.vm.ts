@@ -1,0 +1,4 @@
+/**
+ * LayoutViewModel
+ */
+export class LayoutViewModel { };

@@ -1,0 +1,24 @@
+<layout>
+	<h1 class="clearfix">List of tests: <a class="btn btn-default pull-right" data-bind="click: addTest">Add new test</a></h1>
+
+	<table class="table">
+		<thead>
+			<tr class="clearfix">
+				<th class="col-md-6">Title</th>
+				<th class="col-md-5">Actions</th>
+			</tr>
+		</thead>
+		<tbody class="form-horizontal" data-bind="foreach: { data: tests, as: 'test' }">
+			<tr class="clearfix">
+				<td class="col-md-6">
+					<input class="form-control jira-textbox" data-bind="value: test.name">
+				</td>
+				<td class="col-md-5">
+					<a class="btn btn-success" data-bind="visible: test.isChanged, click: function(test) {$parent.saveTest(test)}">Save</a>
+					<a class="btn btn-warning" data-bind="click: function(test) {$parent.goToTest(test)}">Edit</a>
+					<a class="btn btn-danger" data-bind="click: function(test) {$parent.removeTest(test)}">Remove</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</layout>

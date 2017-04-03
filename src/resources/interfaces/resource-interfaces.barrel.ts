@@ -1,0 +1,1 @@
+export { ITestResource } from './i-test.resource';

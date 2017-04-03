@@ -1,0 +1,62 @@
+{
+  "name": "knockout-ts-webpack-sample",
+  "version": "1.0.0",
+  "description": "Simple application using Knockout + TypeScript + Webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "webpack-dev-server --config webpack.dev.config.babel.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oleksii-ponomarenko/knockout-ts-webpack-sample.git"
+  },
+  "keywords": [
+    "knockout",
+    "typescript",
+    "webpack"
+  ],
+  "author": "Oleksii Ponomarenko",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oleksii-ponomarenko/knockout-ts-webpack-sample/issues"
+  },
+  "homepage": "https://github.com/oleksii-ponomarenko/knockout-ts-webpack-sample#readme",
+  "dependencies": {
+    "bootstrap-loader": "^2.0.0",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.10.1",
+    "jquery": "^3.2.1",
+    "knockout": "^3.4.2",
+    "resolve-url-loader": "^2.0.2",
+    "sammy": "^0.7.6",
+    "url-loader": "^0.5.8"
+  },
+  "devDependencies": {
+    "@types/jquery": "^2.0.41",
+    "@types/knockout": "^3.4.40",
+    "@types/sammy": "0.0.18",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.0",
+    "babel-core": "^6.24.0",
+    "babel-loader": "^6.4.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-es2015": "^6.24.0",
+    "babel-runtime": "^6.23.0",
+    "bootstrap-sass": "^3.3.7",
+    "css-loader": "^0.27.3",
+    "expose-loader": "^0.7.3",
+    "html-webpack-plugin": "^2.28.0",
+    "inversify": "^3.3.0",
+    "node-sass": "^4.5.2",
+    "raw-loader": "^0.5.1",
+    "reflect-metadata": "^0.1.10",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.16.1",
+    "to-string-loader": "^1.1.5",
+    "ts-loader": "^2.0.3",
+    "typescript": "^2.2.2",
+    "webpack": "^2.3.2",
+    "webpack-dev-server": "^2.4.2"
+  }
+}

@@ -1,7 +1,10 @@
 {
 	"compilerOptions": {
 		"target": "es5",
-		"types": ["reflect-metadata"],
+		"typeRoots": [
+			"typings"
+		],
+		"types": ["reflect-metadata", "knockout-sortable"],
 		"module": "commonjs",
 		"moduleResolution": "node",
 		"sourceMap": true,

@@ -5,8 +5,9 @@ import { Answer } from "./answer.model";
  * Question
  */
 export class Question {
-	id: number;
-	text: string;
-	questionType: QuestionType;
-	answers: Answer[] = [];
+	public id: number;
+	public text: string;
+	public questionType: QuestionType;
+	public answers: Answer[] = [];
+	public sortOrder?: number;
 }

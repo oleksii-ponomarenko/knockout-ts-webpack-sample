@@ -7,3 +7,5 @@ import 'bootstrap-loader';
 import 'knockout';
 import 'inversify';
 import 'sammy';
+import 'jquery-ui';
+import 'knockout-sortable';

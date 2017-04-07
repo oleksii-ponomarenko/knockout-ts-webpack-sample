@@ -16,7 +16,7 @@ export class TestObservable {
 		this.originalTest = ko.observable(test);
 		this.id = test.id;
 		this.name = ko.observable(test.name);
-		this.questions = ko.observableArray(test.questions.map((q: Question) => new QuestionObservable(q)));
+		this.questions = ko.observableArray(test.questions.sort((q1, q2) => q1.sortOrder - q2.sortOrder).map((q: Question) => new QuestionObservable(q)));
 		this.isChanged = ko.computed(() => !this.equalsTo(this.originalTest()));
 	}
 
@@ -24,7 +24,7 @@ export class TestObservable {
 		let test: Test = {
 			id: this.id,
 			name: this.name(),
-			questions: this.questions().map((q: QuestionObservable) => q.toQuestion())
+			questions: this.questions().filter(q => !q.isDestroyed()).map((q: QuestionObservable) => q.toQuestion())
 		};
 
 		return test;

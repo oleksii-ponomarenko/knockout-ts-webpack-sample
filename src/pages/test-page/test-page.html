@@ -1,5 +1,5 @@
 <layout>
-	<form class="form-inline">
+	<form class="form-inline" data-bind="visible: !!test()">
 		<h1>Edit test</h1>
 		<h2 class="clearfix">
 			Title: 
@@ -13,12 +13,17 @@
 
 		<div class="well" data-bind="visible: !test().questions().length">
 			<h2>No questions.</h2>
-			<p>You can add it by clicking on <b>Add question</b> button in top-right corner.
+			<p>You can add it by clicking on <b>Add question</b> button in top-right corner.</p>
 		</div>
-		<ul class="unstyled-list" data-bind="foreach: { data: test().questions, as: 'question' }">
+		<ul class="unstyled-list" data-bind="sortable: { data: test().questions, as: 'question', afterMove: function(e, ui) { afterDropping(e.ei); },
+		                                     options: { placeholder: 'sortable-placeholder', start: startDragging } }">
 			<li>
-				<editable-question params="question: question"></editable-question>
+				<editable-question params="question: question, removeQuestion: function(q) { $parent.removeQuestion(q); }"></editable-question>
 			</li>
 		</ul>
 	</form>
+	<div data-bind="visible: !test()">
+		<h2>Cannot find such test.</h2>
+		<p>This test was removed or never exists.</p>
+	</div>
 </layout>

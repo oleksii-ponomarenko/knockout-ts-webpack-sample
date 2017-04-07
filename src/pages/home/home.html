@@ -1,7 +1,7 @@
 <layout>
 	<h1 class="clearfix">List of tests: <a class="btn btn-default pull-right" data-bind="click: addTest">Add new test</a></h1>
 
-	<table class="table">
+	<table class="table" data-bind="visible: !!tests().length">
 		<thead>
 			<tr class="clearfix">
 				<th class="col-md-6">Title</th>
@@ -21,4 +21,8 @@
 			</tr>
 		</tbody>
 	</table>
+	<div class="well" data-bind="visible: !tests().length">
+		<h2>No tests.</h2>
+		<p>You can add it by clicking on <b>Add new test</b> button in top-right corner.</p>
+	</div>
 </layout>

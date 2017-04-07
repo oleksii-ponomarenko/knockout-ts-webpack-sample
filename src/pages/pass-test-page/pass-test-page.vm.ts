@@ -17,10 +17,11 @@ import { QuestionType } from "../../enums/question-type.enum";
  * TestPageViewModel
  */
 @injectable()
-export class TestPageViewModel {
+export class PassTestPageViewModel {
 	private _testService: ITestService;
 
 	public test: KnockoutObservable<TestObservable>;
+	public isTestStarted: KnockoutObservable<boolean>;
 
 	constructor() {
 		this._testService = container.get<ITestService>(injectionTypes.services.testService);
@@ -34,41 +35,10 @@ export class TestPageViewModel {
 		}
 
 		this.test = ko.observable(testModel);
+		this.isTestStarted = ko.observable(false);
 	}
 
-	addQuestion() {
-		let observable = new QuestionObservable();
-		observable.text('New question');
-
-		let observableAnswer = new AnswerObservable();
-		observableAnswer.text('New answer');
-		observable.answers.push(observableAnswer);
-
-		this.test().questions.push(observable);
-	}
-
-	saveTest() {
-		this._testService.update(this.test().toTest());
-		let testModel = new TestObservable(this._testService.get(this.test().id));
-		this.test(testModel);
-	}
-
-	removeQuestion(question: QuestionObservable) {
-		if (question.originalQuestion()) {
-			this.test().questions.destroy(question);
-		} else {
-			this.test().questions.remove(question);
-		}
-	}
-
-	startDragging(event: KnockoutSortable.IMoveEvent<QuestionObservable>, uiParams: JQueryUI.SortableUIParams) {
-		uiParams.placeholder.height(uiParams.item.height());
-	}
-
-	afterDropping(event: KnockoutSortable.IAfterMoveEvent<QuestionObservable>, uiParams: JQueryUI.SortableUIParams) {
-		let questions: QuestionObservable[] = this.test().questions();
-		let sortOrder: number = 1;
-
-		questions.forEach(q => q.sortOrder(sortOrder++));
+	startTest() {
+		this.isTestStarted(true);
 	}
 };

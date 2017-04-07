@@ -3,14 +3,10 @@ import { QuestionObservable, AnswerObservable } from "../../observable-models/ob
 import { QuestionType } from "../../enums/question-type.enum";
 import { Answer } from "../../models/models.barrel";
 
-const _questionTypes: number[] = Object.keys(QuestionType)
-	.filter(key => !isNaN(+key))
-	.map(key => +key);
-
 /**
  * EditableQuestionViewModel
  */
-export class EditableQuestionViewModel {
+export class QuestionViewModel {
 	private _removeQuestion: (answer: QuestionObservable) => void;
 
 	public question: QuestionObservable;
@@ -20,39 +16,15 @@ export class EditableQuestionViewModel {
 	constructor(params: any) {
 		this.question = params.question;
 		this._removeQuestion = params.removeQuestion;
-		this.questionTypes = ko.observableArray(_questionTypes);
 		
 		let correctAnswer = this.question.answers().find(a => a.isRight());
 		this.chosenRadioAnswerId = ko.observable(correctAnswer ? correctAnswer.id : 0);
 		this.chosenRadioAnswerId.subscribe(this.selectAnswer, this);
 	}
 
-	getQuestionTypeName(type: number) {
-		return QuestionType[type];
-	}
-
-	addAnswer() {
-		let observable: AnswerObservable = new AnswerObservable();
-		observable.text('New answer');
-
-		this.question.answers.push(observable);
-	}
-
 	selectAnswer(answerId: number) {
 		let answer = this.question.answers().find((a: AnswerObservable) => a.id === answerId);
 		this.question.answers().forEach((a: AnswerObservable) => a.isRight(false));
 		answer.isRight(true);
-	}
-
-	removeAnswer(answer: AnswerObservable) {
-		if (answer.originalAnswer()) {
-			this.question.answers.destroy(answer);
-		} else {
-			this.question.answers.remove(answer);
-		}
-	}
-
-	remove() {
-		this._removeQuestion(this.question);
 	}
 };

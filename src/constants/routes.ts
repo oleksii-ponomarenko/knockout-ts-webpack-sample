@@ -1,7 +1,8 @@
 const routes = {
 	empty: '',
 	home: '#/home',
-	test: '#/test/:testId'
+	test: '#/test/:testId',
+	passTest: '#/pass/test/:testId'
 }
 
 const routeTypes = {

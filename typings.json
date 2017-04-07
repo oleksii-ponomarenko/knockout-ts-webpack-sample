@@ -1,0 +1,7 @@
+{
+    "name": "TestName",
+    "version": "1.0.0",
+    "globalDependencies": {
+        "knockout-sortable": "file:typings/knockout-sortable.d.ts"
+    }
+}

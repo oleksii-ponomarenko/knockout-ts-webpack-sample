@@ -4,17 +4,10 @@ import { AnswerObservable } from "../../../observable-models/observable-models.b
 /**
  * EditableCheckboxAnswerViewModel
  */
-export class EditableCheckboxAnswerViewModel {
-	private _removeAnswer: (answer: AnswerObservable) => void;
-
+export class CheckboxAnswerViewModel {
 	public answer: AnswerObservable;
 
 	constructor(params: any) {
 		this.answer = params.answer;
-		this._removeAnswer = params.removeAnswer;
-	}
-
-	remove() {
-		this._removeAnswer(this.answer);
 	}
 };

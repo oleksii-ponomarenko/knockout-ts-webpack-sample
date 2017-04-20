@@ -8,13 +8,14 @@ import { QuestionType } from "../../../enums/question-type.enum";
 /**
  * EditableCheckboxAnswerViewModel
  */
-export class CheckboxAnswerViewModel {
+export class PassedCheckboxAnswerViewModel {
 	private _assessmentService: IAssessmentService;
 
 	public answer: AnswerObservable;
 	public assessment: Assessment;
 	public isSelected: KnockoutObservable<boolean>;
 	public questionId: number;
+	public correctionClass: KnockoutObservable<string>;
 
 	constructor(params: any) {
 		this._assessmentService = container.get<IAssessmentService>(injectionTypes.services.assessmentService);
@@ -23,19 +24,8 @@ export class CheckboxAnswerViewModel {
 		this.assessment = params.assessment;
 		this.questionId = params.questionId;
 
-		this.isSelected = ko.observable(false);
-		this.isSelected.subscribe(this.handleSelectionChange, this);
-	}
-
-	handleSelectionChange(isSelected: boolean) {
-		if (isSelected) {
-			let userAnswer = new UserAnswer();
-			userAnswer.questionId = this.questionId;
-			userAnswer.answerId = this.answer.id;
-
-			this._assessmentService.upsertAnswer(this.assessment, userAnswer, QuestionType.checkbox);
-		} else {
-			this._assessmentService.removeAnswer(this.assessment, this.questionId, this.answer.id);
-		}
+		let userAnswer = this.assessment.userAnswers.find(a => a.questionId === this.questionId && a.answerId === this.answer.id);
+		this.isSelected = ko.computed(() => !!userAnswer);
+		this.correctionClass = ko.computed(() => this.answer.isRight() ? 'text-success' : (this.isSelected() ? 'text-danger' : ''));
 	}
 };

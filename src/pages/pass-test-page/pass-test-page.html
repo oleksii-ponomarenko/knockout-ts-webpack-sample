@@ -1,21 +1,23 @@
 <layout>
-	<div data-bind="visible: !!test() && test().questions().length && !isTestStarted">
+	<div data-bind="if: !!test() && test().questions().length && !isTestStarted()">
 		<h2>You are starting passing test:</h2>
 		<h1 data-bind="text: test().name"></h1>
 		<a class="btn btn-success" data-bind="click: startTest">Start!</a>
 	</div>
 
-	<form data-bind="visible: !!test() && test().questions().length">
-		<h1 class="clearfix" data-bind="text: test().name"></h1>
-		<ul class="unstyled-list" data-bind="foreach: { data: test().questions, as: 'question' }">
-			<li>
-				<question params="question: question"></question>
-			</li>
-		</ul>
-		<a class="btn btn-success">Done!</a>
-	</form>
+	<div data-bind="if: !!test() && test().questions().length && isTestStarted()">
+		<form>
+			<h1 class="clearfix" data-bind="text: test().name"></h1>
+			<ul class="unstyled-list" data-bind="foreach: { data: test().questions, as: 'question' }">
+				<li>
+					<question params="question: question, assessment: $parent.assessment"></question>
+				</li>
+			</ul>
+			<a class="btn btn-success" data-bind="click: finishTest">Done!</a>
+		</form>
+	</div>
 
-	<div data-bind="visible: !test()">
+	<div data-bind="if: !test()">
 		<h2>Cannot find such test.</h2>
 		<p>This test was removed or never exists.</p>
 	</div>

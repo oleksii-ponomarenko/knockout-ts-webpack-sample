@@ -5,5 +5,7 @@ import { UserAnswer } from './user-answer.model';
  */
 export class Assessment {
 	id: number;
-	userAnswers: UserAnswer[]
+	testId: number;
+	userAnswers: UserAnswer[] = [];
+	isFinished: boolean = false;
 }

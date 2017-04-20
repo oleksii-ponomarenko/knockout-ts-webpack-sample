@@ -8,30 +8,21 @@ import container, { injectionTypes } from "../../../configs/injection.config";
 /**
  * EditableSimpleAnswerViewModel
  */
-export class SimpleAnswerViewModel {
-	private _assessmentService: IAssessmentService;
-
+export class PassedSimpleAnswerViewModel {
 	public answer: AnswerObservable;
 	public assessment: Assessment;
 	public answerText: KnockoutObservable<string>;
 	public questionId: number;
+	public isRight: KnockoutObservable<boolean>;
 
 	constructor(params: any) {
-		this._assessmentService = container.get<IAssessmentService>(injectionTypes.services.assessmentService);
-
 		this.answer = params.answer();
 		this.questionId = params.questionId;
 		this.assessment = params.assessment;
 
-		this.answerText = ko.observable('');
-		this.answerText.subscribe(this.handleTextChange, this);
-	}
-
-	handleTextChange(text: string) {
-		let answer = new UserAnswer();
-		answer.answerId = this.answer.id;
-		answer.questionId = this.questionId;
-		answer.text = text || '';
-		this._assessmentService.upsertAnswer(this.assessment, answer, QuestionType.simple);
+		let userAnswer = this.assessment.userAnswers.find(a => a.questionId === this.questionId && a.answerId === this.answer.id);
+		userAnswer.text = userAnswer.text || '';
+		this.answerText = ko.computed(() => userAnswer.text);
+		this.isRight = ko.computed(() => this.answerText().toLowerCase() === this.answer.text().toLowerCase());
 	}
 };

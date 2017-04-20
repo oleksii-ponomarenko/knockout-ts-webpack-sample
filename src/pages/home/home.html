@@ -17,6 +17,8 @@
 					<a class="btn btn-success" data-bind="visible: test.isChanged, click: function(test) {$parent.saveTest(test)}">Save</a>
 					<a class="btn btn-warning" data-bind="click: function(test) {$parent.goToTest(test)}">Edit</a>
 					<a class="btn btn-danger" data-bind="click: function(test) {$parent.removeTest(test)}">Remove</a>
+					<a class="btn btn-info" data-bind="click: function(test) {$parent.goToPassTest(test)}">Pass test</a>
+					<a class="btn btn-default" data-bind="click: function(test) {$parent.goToPassedTests(test)}">View passed</a>
 				</td>
 			</tr>
 		</tbody>

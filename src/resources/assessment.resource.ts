@@ -1,6 +1,6 @@
 import { injectable } from "inversify";
-import { IAssessmentResource } from "./interfaces/i-assessment.resource";
 import { Assessment } from "../models/models.barrel";
+import { IAssessmentResource } from "./interfaces/resource-interfaces.barrel";
 
 const _assessmentStorageKey: string = 'assessments';
 
@@ -9,21 +9,44 @@ const _assessmentStorageKey: string = 'assessments';
  */
 @injectable()
 export class AssessmentResource implements IAssessmentResource {
-	get(id: number): Assessment {
-		throw new Error('Method not implemented.');
-	}
-	add(assessment: Assessment): number {
-		throw new Error('Method not implemented.');
-	}
-	update(assessment: Assessment): number {
-		throw new Error('Method not implemented.');
+	getByTest(testId: number): Assessment[] {
+		let assessments: Assessment[] = this.getAssessments();
+		let foundAssessments: Assessment[] = assessments.filter(a => a.testId === testId);
+
+		return foundAssessments;
 	}
 
-	private getTests(): Assessment[] {
+	get(id: number): Assessment {
+		let assessments: Assessment[] = this.getAssessments();
+		let foundAssessment: Assessment = assessments.find(a => a.id === id);
+
+		return foundAssessment;
+	}
+
+	add(assessment: Assessment): number {
+		assessment.id = +new Date();
+		let assessments = this.getAssessments();
+
+		assessments.push(assessment);
+		this.saveAssessments(assessments);
+
+		return assessment.id;
+	}
+
+	update(assessment: Assessment): void {
+		let assessments: Assessment[] = this.getAssessments();
+		let assessmentIndex = assessments.findIndex(a => a.id === assessment.id);
+
+		assessments[assessmentIndex] = assessment;
+
+		this.saveAssessments(assessments);
+	}
+
+	private getAssessments(): Assessment[] {
 		return JSON.parse(window.localStorage.getItem(_assessmentStorageKey)) || [ ];
 	}
 
-	private saveTests(tests: Assessment[]): void {
-		window.localStorage.setItem(_assessmentStorageKey, JSON.stringify(tests));
+	private saveAssessments(assessments: Assessment[]): void {
+		window.localStorage.setItem(_assessmentStorageKey, JSON.stringify(assessments));
 	}
 }

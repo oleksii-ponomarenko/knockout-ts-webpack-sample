@@ -48,6 +48,14 @@ export class HomePageViewModel {
 		RouterConfig.goToRoute(routes.test, { testId: test.id });
 	}
 
+	goToPassedTests(test: TestObservable) {
+		RouterConfig.goToRoute(routes.passedTests, { testId: test.id });
+	}
+
+	goToPassTest(test: TestObservable) {
+		RouterConfig.goToRoute(routes.passTest, { testId: test.id });
+	}
+
 	removeTest(test: TestObservable) {
 		this._testService.remove(test.id);
 		this.tests.remove(test);

@@ -11,6 +11,7 @@ export class TestObservable {
 	public questions: KnockoutObservableArray<QuestionObservable>;
 	public isChanged: KnockoutObservable<boolean>;
 	public originalTest: KnockoutObservable<Test>;
+	public maxMark?: KnockoutObservable<number>;
 
 	constructor(test: Test) {
 		this.originalTest = ko.observable(test);

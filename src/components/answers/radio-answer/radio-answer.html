@@ -1,6 +1,6 @@
 <div class="radio">
 	<label>
-		<input type="radio" data-bind="value: answer.id, name: 'question-'+questionId" />
+		<input type="radio" data-bind="value: answer.id, attr: { name: 'question-'+questionId }, checked: chosenRadioAnswerId" />
 		<span data-bind="text: answer.text"></span>
 	</label>
 </div>

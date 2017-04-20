@@ -39,6 +39,9 @@ export class RouterConfig {
 		}).get(routes.passTest, (context: Sammy.EventContext) => {
 			app.pageComponentName(componentNames.passTestPage);
 			RouterConfig.routeParams = context.params;
+		}).get(routes.passedTests, (context: Sammy.EventContext) => {
+			app.pageComponentName(componentNames.passedTestsPage);
+			RouterConfig.routeParams = context.params;
 		}).get(routes.empty, (context: Sammy.EventContext) => {
 			application.runRoute(routeTypes.get, routes.home);
 		})

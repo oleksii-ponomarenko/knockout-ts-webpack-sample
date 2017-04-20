@@ -9,10 +9,13 @@ const injectionTypes = {
 		appVM: Symbol('appVM')
 	},
 	services: {
-		testService: Symbol('testService')
+		testService: Symbol('testService'),
+		assessmentService: Symbol('assessmentService'),
+		correctnessService: Symbol('correctnessService')
 	},
 	resources: {
-		testResource: Symbol('testResource')
+		testResource: Symbol('testResource'),
+		assessmentResource: Symbol('assessmentResource')
 	}
 };
 

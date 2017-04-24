@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="0"
+            tests="1">
+
+  <testsuite name="tests.bundle"
+    errors="1" failures="0" hostname="" id="" package="tests.bundle" skipped="0"
+    tests="1" time="0.02700" timestamp="Mon, 24 Apr 2017 12:34:25 GMT">
+  
+    <testcase name="Home page: Work with test -&gt; Should add, rename, save, delete successfully" classname="tests.bundle" time="0.02700" assertions="0">
+    </testcase>
+      <system-err>
+          Error while running [Tests Bundle / Home page: Work with test -&gt; Should add, rename, save, delete successfully]:
+
+  TypeError: browser.page.HomePageObject is not a function
+    at Object.exports.Nightwatch tests.tests.Home page: Work with test -&gt; Should add, rename, save, delete successfully (D:\PDP\Knockout\knockout-ts-webpack-sample\build\e2e\tests\tests.bundle.js:82:14)
+    at Module.call (C:\Users\Oleksii_Ponomarenko\AppData\Roaming\npm\node_modules\nightwatch\lib\runner\module.js:62:34)
+    at C:\Users\Oleksii_Ponomarenko\AppData\Roaming\npm\node_modules\nightwatch\lib\runner\testcase.js:70:29
+    at _fulfilled (C:\Users\Oleksii_Ponomarenko\AppData\Roaming\npm\node_modules\nightwatch\node_modules\q\q.js:834:54)
+    at self.promiseDispatch.done (C:\Users\Oleksii_Ponomarenko\AppData\Roaming\npm\node_modules\nightwatch\node_modules\q\q.js:863:30)
+    at Promise.promise.promiseDispatch (C:\Users\Oleksii_Ponomarenko\AppData\Roaming\npm\node_modules\nightwatch\node_modules\q\q.js:796:13)
+    at C:\Users\Oleksii_Ponomarenko\AppData\Roaming\npm\node_modules\nightwatch\node_modules\q\q.js:556:49
+    at runSingle (C:\Users\Oleksii_Ponomarenko\AppData\Roaming\npm\node_modules\nightwatch\node_modules\q\q.js:137:13)
+    at flush (C:\Users\Oleksii_Ponomarenko\AppData\Roaming\npm\node_modules\nightwatch\node_modules\q\q.js:125:13)
+    at nextTickCallbackWith0Args (node.js:420:9)
+      </system-err>
+  
+  
+  </testsuite>
+</testsuites>

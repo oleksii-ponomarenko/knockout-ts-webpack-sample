@@ -1,7 +1,7 @@
 <div class="well">
 	<a type="button" class="close" title="Remove answer" data-dismiss="alert" data-bind="click: remove">&times;</a>
 	<div class="h4">
-		<input placeholder="Question text" class="form-control jira-textbox" data-bind="value: question.text" />
+		<input name="question-text" placeholder="Question text" class="form-control jira-textbox" data-bind="value: question.text" />
 	</div>
 
 	<div data-bind="if: question.questionType() === 1 && question.answers().length > 0">
@@ -34,7 +34,7 @@
 
 		<div class="pull-right">
 			<label>Choose question type: </label>
-			<select class="form-control" data-bind="value: question.questionType, optionsText: getQuestionTypeName, options: questionTypes"></select>
+			<select name="type" class="form-control" data-bind="value: question.questionType, optionsText: getQuestionTypeName, options: questionTypes"></select>
 		</div>
 	</div>
 </div>

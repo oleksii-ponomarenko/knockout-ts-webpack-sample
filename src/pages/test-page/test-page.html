@@ -1,4 +1,4 @@
-<layout>
+<layout id="testPage">
 	<form class="form-inline" data-bind="visible: !!test()">
 		<h1>Edit test</h1>
 		<h2 class="clearfix">
@@ -6,8 +6,8 @@
 			<input class="form-control jira-textbox" data-bind="value: test().name"></input>
 
 			<div class="pull-right">
-				<a class="btn btn-success" data-bind="visible: test().isChanged, click: saveTest">Save</a>
-				<a class="btn btn-default" data-bind="click: addQuestion">Add question</a>
+				<a id="saveTestBtn" class="btn btn-success" data-bind="visible: test().isChanged, click: saveTest">Save</a>
+				<a id="addQuestionBtn" class="btn btn-default" data-bind="click: addQuestion">Add question</a>
 			</div>
 		</h1>
 

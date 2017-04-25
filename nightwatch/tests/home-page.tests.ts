@@ -2,7 +2,7 @@ import { NightWatchBrowser } from "../../typings/nightwatch/index";
 import { HomePageObject } from "../page-objects/home.page-object";
 
 let tests = {
-	"Home page: Work with test -> Should add, rename, save, delete successfully": function(browser: NightWatchBrowser) {
+	"Home page: Work with test -> Should add, rename, save, delete successfully": (browser: NightWatchBrowser) => {
 		let home = new HomePageObject(browser);
 		home
 			.navigate()
